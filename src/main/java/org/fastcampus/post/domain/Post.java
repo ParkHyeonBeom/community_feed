@@ -10,6 +10,7 @@ public class Post {
     private User author;
     private PostContent content;
     private PositiveIntegerCounter likeCount;
+    private PostPublicationStatus status;
 
     public Post(Long postId, User author, PostContent content) {
 
@@ -20,6 +21,7 @@ public class Post {
         this.author = author;
         this.content = content;
         this.likeCount = new PositiveIntegerCounter();
+        this.status = PostPublicationStatus.Pulbic;
     }
 
     public void like(User user) {
@@ -31,6 +33,14 @@ public class Post {
 
     public void unLike() {
         likeCount.decreaseCount();
+    }
+
+    public void updateContent(User user, String updateContentText, PostPublicationStatus status) {
+        if(!this.author.equals(user)){
+            throw new IllegalArgumentException("");
+        }
+        this.content.updateContent(updateContentText);
+        this.status = status;
     }
 
 }

@@ -14,9 +14,12 @@ public class PositiveIntegerCounter {
 
     public int decreaseCount() {
         if( count <= 0 ){
-            throw new IllegalArgumentException("Error");
+            return count;
         }
         return this.count--;
     }
 
+    public int getCount() {
+        return count;
+    }
 }

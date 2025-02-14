@@ -10,12 +10,11 @@ public class User {
     private final PositiveIntegerCounter followerCount;
     private final PositiveIntegerCounter followingCount;
 
-    public User(Long id, UserInfo userInfo, PositiveIntegerCounter followerCount,
-            PositiveIntegerCounter followingCount) {
+    public User(Long id, UserInfo userInfo) {
         this.id = id;
         this.userInfo = userInfo;
-        this.followerCount = followerCount;
-        this.followingCount = followingCount;
+        this.followerCount = new PositiveIntegerCounter();
+        this.followingCount = new PositiveIntegerCounter();
     }
     // 팔로우
     // A -> B 를 팔로우
@@ -26,7 +25,7 @@ public class User {
         {
             throw new IllegalArgumentException("Error");
         }
-        followingCount.increaseCount();
+        this.followingCount.increaseCount();
         targetUser.increaseFollowerCount();
     }
 
@@ -67,4 +66,11 @@ public class User {
         return Objects.hash(id, userInfo);
     }
 
+    public PositiveIntegerCounter getFollowerCount() {
+        return followerCount;
+    }
+
+    public PositiveIntegerCounter getFollowingCount() {
+        return followingCount;
+    }
 }
