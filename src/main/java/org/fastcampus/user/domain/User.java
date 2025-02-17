@@ -16,6 +16,7 @@ public class User {
         this.followerCount = new PositiveIntegerCounter();
         this.followingCount = new PositiveIntegerCounter();
     }
+
     // 팔로우
     // A -> B 를 팔로우
     // A의 팔로잉 증가
@@ -25,7 +26,7 @@ public class User {
         {
             throw new IllegalArgumentException("Error");
         }
-        this.followingCount.increaseCount();
+        followingCount.increaseCount();
         targetUser.increaseFollowerCount();
     }
 
@@ -43,7 +44,7 @@ public class User {
     }
 
     private void increaseFollowerCount(){
-        followingCount.increaseCount();
+        followerCount.increaseCount();
     }
 
     private void decreaseFollowerCount(){
@@ -66,11 +67,19 @@ public class User {
         return Objects.hash(id, userInfo);
     }
 
-    public PositiveIntegerCounter getFollowerCount() {
-        return followerCount;
+    public int getFollowerCount() {
+        return followerCount.getCount();
     }
 
-    public PositiveIntegerCounter getFollowingCount() {
-        return followingCount;
+    public int getFollowingCount( ) {
+        return followingCount.getCount();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 }

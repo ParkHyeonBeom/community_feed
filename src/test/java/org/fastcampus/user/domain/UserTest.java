@@ -2,6 +2,7 @@ package org.fastcampus.user.domain;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -38,35 +39,68 @@ public class UserTest {
     @Test
     void givenTwoUsers_whenHashCode_thenFalse() {
 
-        //when
+        // when
         boolean value = user1.hashCode() == user2.hashCode();
 
-        //then
+        // then
         assertFalse(value);
     }
 
     @Test
     void givenSameUsers_whenHashCode_thenTrue() {
 
-        //when
+        // when
         boolean value = user1.hashCode() == user1.hashCode();
 
-        //then
+        // then
         assertTrue(value);
     }
 
     @Test
-    void givenTwoUsers_whenUser1FollowUser2_thenUser2FollowerCountIs1(){
+    void givenTwoUsers_whenUser1FollowUser2_thenIncreaseUserCount() {
 
-        //when
+        // when
         user1.follow(user2);
-        //then
-        assertEquals(1,user2.getFollowerCount().getCount());
+        // then
+        assertEquals(1,user2.getFollowerCount());
+        assertEquals(1,user1.getFollowingCount());
+        assertEquals(0,user2.getFollowingCount());
+        assertEquals(0,user1.getFollowerCount());
 
     }
 
     @Test
-    void givenSameUsers_whenFollow_thenThrowException(){
+    void givenTwoUsersFollow_whenUser1UnFollowUser2_thenDecreaseUserCount() {
+
+        // given
+        user1.follow(user2);
+
+        // when
+        user1.unfollow(user2);
+
+        // then
+        assertEquals(0,user1.getFollowerCount());
+        assertEquals(0,user2.getFollowerCount());
+        assertEquals(0,user1.getFollowingCount());
+        assertEquals(0,user2.getFollowingCount());
 
     }
+
+    @Test
+    void givenTwoUsers_whenUser1UnFollowUser2_then0() {
+
+        // when
+        user1.unfollow(user2);
+
+        // then
+        assertEquals(0,user1.getFollowerCount());
+        assertEquals(0,user2.getFollowerCount());
+        assertEquals(0,user1.getFollowingCount());
+        assertEquals(0,user2.getFollowingCount());
+
+    }
+
+
+
+
 }
