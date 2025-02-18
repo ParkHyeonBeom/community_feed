@@ -9,6 +9,7 @@ public class PostContent extends Content {
         super(content);
     }
 
+
     @Override
     public void checkText(String contentText) {
 

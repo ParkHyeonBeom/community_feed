@@ -22,6 +22,7 @@ public class DateTimeInfo {
     }
 
     public LocalDateTime getDateTime() {
-        return dateTime;
+        return dateTime.now();
     }
+
 }

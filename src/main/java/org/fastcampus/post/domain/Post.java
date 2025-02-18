@@ -43,4 +43,23 @@ public class Post {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public PostContent getContent() {
+        return content;
+    }
+
+    public PositiveIntegerCounter getLikeCount() {
+        return likeCount;
+    }
+
+    public PostPublicationStatus getStatus() {
+        return status;
+    }
 }
