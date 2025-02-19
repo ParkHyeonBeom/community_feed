@@ -1,18 +1,23 @@
 package org.fastcampus.post.domain;
 
 import org.fastcampus.common.domain.PositiveIntegerCounter;
+import org.fastcampus.post.domain.content.Content;
 import org.fastcampus.post.domain.content.PostContent;
 import org.fastcampus.user.domain.User;
 
 public class Post {
 
-    private Long id;
-    private User author;
-    private PostContent content;
-    private PositiveIntegerCounter likeCount;
+    private final Long id;
+    private final User author;
+    private final Content content;
+    private final PositiveIntegerCounter likeCount;
     private PostPublicationStatus status;
 
-    public Post(Long postId, User author, PostContent content) {
+    public Post(Long id, User author, Content content) {
+        this(id, author, content, PostPublicationStatus.Pulbic);
+    }
+
+    public Post(Long postId, User author, Content content, PostPublicationStatus status) {
 
         if(author == null)
             throw new IllegalArgumentException("존재하지 않는 회원");
@@ -21,7 +26,11 @@ public class Post {
         this.author = author;
         this.content = content;
         this.likeCount = new PositiveIntegerCounter();
-        this.status = PostPublicationStatus.Pulbic;
+        this.status = status;
+    }
+
+    public static Post createPost(Long id, User author, String content, PostPublicationStatus status) {
+        return new Post(id, author, new PostContent(content), status);
     }
 
     public void like(User user) {
@@ -51,7 +60,7 @@ public class Post {
         return author;
     }
 
-    public PostContent getContent() {
+    public Content getContent() {
         return content;
     }
 

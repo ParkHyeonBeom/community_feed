@@ -14,6 +14,10 @@ public class Comment {
     private CommentContent content;
     private PositiveIntegerCounter likeCount;
 
+    public static Comment createComment(Post post, User author, CommentContent content) {
+        return new Comment(null, post, author, content);
+    }
+
     public Comment(Long id, Post post, User author, CommentContent content) {
 
         if(post == null)
