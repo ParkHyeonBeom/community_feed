@@ -68,6 +68,10 @@ public class Post {
         return likeCount;
     }
 
+    public int getLikeCountInt() {
+        return likeCount.getCount();
+    }
+
     public PostPublicationStatus getStatus() {
         return status;
     }

@@ -1,9 +1,8 @@
-package org.fastcampus.application;
+package org.fastcampus.user.application;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.fastcampus.repository.FakeUserRepository;
-import org.fastcampus.user.application.UserService;
+import org.fastcampus.user.repository.FakeUserRepository;
 import org.fastcampus.user.application.dtos.CreateUserRequestDto;
 import org.fastcampus.user.domain.User;
 import org.fastcampus.user.domain.interfaces.UserRepository;

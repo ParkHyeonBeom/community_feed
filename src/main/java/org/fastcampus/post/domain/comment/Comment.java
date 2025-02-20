@@ -55,4 +55,23 @@ public class Comment {
     }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public CommentContent getContent() {
+        return content;
+    }
+
+    public PositiveIntegerCounter getLikeCount() {
+        return likeCount;
+    }
 }

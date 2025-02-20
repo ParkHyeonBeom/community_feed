@@ -29,16 +29,16 @@ public class PostService {
     }
 
     public Post createPost(CreatePostRequestDto dto) {
-        User author = userService.getUser(dto.id());
+        User author = userService.getUser(dto.userId());
         Post post = Post.createPost(null,author, dto.content(),dto.status());
         return postRepository.save(post);
     }
 
-    public Post updatePost(Long id, UpdatePostRequestDto dto) {
+    public Post updatePost(Long id, CreatePostRequestDto dto) {
 
         Post post = getPost(id);
 
-        User author = userService.getUser(dto.id());
+        User author = userService.getUser(dto.userId());
 
         post.updateContent(author, dto.content(),dto.status());
 

@@ -3,7 +3,7 @@ package org.fastcampus.post;
 import org.fastcampus.post.domain.Post;
 import org.fastcampus.post.domain.PostPublicationStatus;
 import org.fastcampus.post.domain.content.PostContent;
-import org.fastcampus.repository.FakeUserRepository;
+import org.fastcampus.user.repository.FakeUserRepository;
 import org.fastcampus.user.domain.User;
 import org.fastcampus.user.domain.UserInfo;
 import org.junit.jupiter.api.Assertions;
