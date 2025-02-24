@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import org.fastcampus.post.domain.comment.Comment;
+import org.fastcampus.post.domain.content.CommentContent;
 import org.fastcampus.post.repository.CommentRepository;
 
 public class FakeCommentRepository implements CommentRepository {
@@ -19,7 +20,7 @@ public class FakeCommentRepository implements CommentRepository {
 
         Long id = (comments.size() + 1L);
 
-        Comment newComment = new Comment(id, comment.getPost(), comment.getAuthor(), comment.getContent());
+        Comment newComment = new Comment(id, comment.getPost(), comment.getAuthor(), new CommentContent(comment.getContent()));
         comments.put(id, newComment);
 
         return newComment;

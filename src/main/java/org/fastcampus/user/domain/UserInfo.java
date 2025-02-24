@@ -1,5 +1,8 @@
 package org.fastcampus.user.domain;
 
+import lombok.Getter;
+
+@Getter
 // VO 객체를 활용하여 유효성 검증 진행
 public class UserInfo {
 

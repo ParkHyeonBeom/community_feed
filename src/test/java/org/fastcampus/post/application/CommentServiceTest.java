@@ -32,7 +32,7 @@ public class CommentServiceTest extends PostApplicationTestTemplate {
         Comment result = commentService.getComment(comment.getId());
 
         // then
-        Assertions.assertEquals(updatedContent, result.getContent().getContentText());
+        Assertions.assertEquals(updatedContent, result.getContent());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class CommentServiceTest extends PostApplicationTestTemplate {
         commentService.likeComment(new LikeRequestDto(comment.getId(), user2.getId()));
 
         // then
-        Assertions.assertEquals(1, comment.getLikeCount().getCount());
+        Assertions.assertEquals(1, comment.getLikeCount());
     }
 
 

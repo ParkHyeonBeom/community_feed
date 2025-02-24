@@ -31,7 +31,7 @@ public class UserServiceTest {
 
         assertNotEquals(userRepository.findByUserId(test1.getId()),userRepository.findByUserId(test2.getId()));
 
-        assertEquals("name",test1.getUserInfo().getName());
+        assertEquals("name",test1.getName());
 
     }
 

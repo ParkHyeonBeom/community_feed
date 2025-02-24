@@ -1,10 +1,16 @@
 package org.fastcampus.post.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.fastcampus.common.domain.PositiveIntegerCounter;
 import org.fastcampus.post.domain.content.Content;
 import org.fastcampus.post.domain.content.PostContent;
 import org.fastcampus.user.domain.User;
 
+@Builder
+@AllArgsConstructor
+@Getter
 public class Post {
 
     private final Long id;
@@ -62,6 +68,10 @@ public class Post {
 
     public Content getContent() {
         return content;
+    }
+
+    public String getContentString() {
+        return content.getContentText();
     }
 
     public PositiveIntegerCounter getLikeCount() {
