@@ -3,8 +3,9 @@ package org.fastcampus.user.application;
 import org.fastcampus.user.application.dtos.FollowUserRequestDto;
 import org.fastcampus.user.domain.User;
 import org.fastcampus.user.domain.interfaces.UserRelationRepository;
-import org.fastcampus.user.domain.interfaces.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserRelationService {
 
     private final UserService userService;
@@ -42,7 +43,7 @@ public class UserRelationService {
         }
 
         user.unfollow(targetUser);
-        userRelationRepository.save(user, targetUser);
+        userRelationRepository.delete(user, targetUser);
 
     }
 

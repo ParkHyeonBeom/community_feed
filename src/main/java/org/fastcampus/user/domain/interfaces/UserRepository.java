@@ -6,6 +6,6 @@ import org.fastcampus.user.domain.User;
 public interface UserRepository {
 
     User save(User user);
-    Optional<User> findByUserId(Long id);
+    User findByUserId(Long id);
 
 }

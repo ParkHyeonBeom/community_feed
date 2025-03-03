@@ -1,21 +1,31 @@
 package org.fastcampus.user.repository;
 
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.fastcampus.JPA.JpaUserRepository;
 import org.fastcampus.user.domain.User;
 import org.fastcampus.user.domain.interfaces.UserRepository;
+import org.fastcampus.user.model.UserEntity;
+import org.springframework.stereotype.Repository;
 
+@Repository
+@RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
-    @Override
-    public Optional<User> findByUserId(Long id) {
-        return Optional.empty();
-    }
+    private final JpaUserRepository jpaUserRepository;
 
     @Override
     public User save(User user) {
+        UserEntity userEntity = new UserEntity(user);
+        jpaUserRepository.save(userEntity);
+        return userEntity.toUser();
+    }
 
-        return null;
-
+    @Override
+    public User findByUserId(Long id) {
+        UserEntity userEntity = jpaUserRepository
+                .findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        return userEntity.toUser();
     }
 
 }

@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRelationIdEntity implements Serializable {
+    private Long followingId;
     private Long followerId;
-    private Long followeeId;
 }

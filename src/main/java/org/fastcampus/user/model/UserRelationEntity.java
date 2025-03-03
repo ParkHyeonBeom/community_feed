@@ -17,15 +17,15 @@ import org.fastcampus.common.model.TimeBaseEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-//@IdClass(UserRelationIdEntity.class)
+@IdClass(UserRelationIdEntity.class)
 public class UserRelationEntity extends TimeBaseEntity {
 
-//    @Id
-//    private Long followerId;
-//
-//    @Id
-//    private Long followeeId;
+    @Id
+    private Long followingId;
 
-    @EmbeddedId
-    private UserRelationIdEntity userId;
+    @Id
+    private Long followerId;
+
+//    @EmbeddedId
+//    private UserRelationIdEntity userId;
 }
