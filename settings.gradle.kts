@@ -1,2 +1,2 @@
-rootProject.name = "Community_Feed"
+rootProject.name = "community-feed"
 
